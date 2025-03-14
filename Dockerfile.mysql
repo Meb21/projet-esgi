@@ -1,0 +1,14 @@
+# Utilisation de l'image officielle MySQL 8.0
+FROM mysql:8.0
+
+# Définition des variables d'environnement pour MySQL
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=db_paymybuddy
+ENV MYSQL_USER=user
+ENV MYSQL_PASSWORD=password
+
+# Copie des fichiers d'initialisation SQL dans le dossier d'initialisation de MySQL
+COPY ./initdb /docker-entrypoint-initdb.d
+
+# Exposer le port MySQL
+EXPOSE 3306
